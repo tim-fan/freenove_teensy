@@ -1,5 +1,11 @@
 #include "Motor.h"
 
+void setup_pwm_driver(Adafruit_PWMServoDriver& pwm_driver){
+    pwm_driver.begin();
+    pwm_driver.setOscillatorFrequency(27000000);
+    pwm_driver.setPWMFreq(1000); // idk
+}
+
 Motor::Motor(Adafruit_PWMServoDriver& pwm_driver, int fwd_channel, int bkwd_channel):
     _pwm_driver(pwm_driver), _fwd_channel(fwd_channel), _bkwd_channel(bkwd_channel) {}
 

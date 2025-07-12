@@ -11,9 +11,7 @@ void setup() {
   while (!Serial && millis() < 5000); // Wait for serial port to connect. Needed for native USB port only.
   Serial.println("\n Single Motor test");
 
-  pwm_driver.begin();
-  pwm_driver.setOscillatorFrequency(27000000);
-  pwm_driver.setPWMFreq(50); 
+  setup_pwm_driver(pwm_driver);
 
   pinMode(LED_BUILTIN, OUTPUT);
 }

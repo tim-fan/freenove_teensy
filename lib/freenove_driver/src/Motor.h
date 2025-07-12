@@ -2,7 +2,7 @@
 
 #include <Adafruit_PWMServoDriver.h>
 
-
+void setup_pwm_driver(Adafruit_PWMServoDriver& pwm_driver);
 
 class Motor {
     public:
