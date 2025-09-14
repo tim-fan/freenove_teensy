@@ -3,6 +3,9 @@
 //  Simply takes strings over serial of form "<forward_val>,<turn_val>\n"
 // where forward_val and turn_val specify signed floats.
 // A bit inefficient to encode via strings, but quick and easy.
+// 
+// Quick command line test:
+// echo "0.4,-0.2" > /dev/ttyUSB0
 
 
 #include <Arduino.h>
