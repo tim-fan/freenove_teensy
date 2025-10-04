@@ -21,6 +21,8 @@
 
 unsigned long last_receive_time;
 
+unsigned int blink_period = 500; // ms
+
 Adafruit_PWMServoDriver pwm_driver = Adafruit_PWMServoDriver();
 
 DriveSystem drive_system(
@@ -41,8 +43,10 @@ void setup() {
 
 void loop() {
 
+  digitalWrite(LED_BUILTIN, millis() % blink_period < (blink_period / 2)); // blink to show running
+
   if (HWSERIAL.available()) {
-    digitalWrite(LED_BUILTIN, HIGH);
+    blink_period = 100; // quick blink when connected
     String command = HWSERIAL.readStringUntil('\n'); // Read until newline
     command.trim();
     Serial.println(String("Received command: ") + command);
@@ -59,9 +63,9 @@ void loop() {
       last_receive_time = millis();
     }
   } else if ((millis() - last_receive_time) > SERIAL_TIMEOUT){
+    blink_period = 2000; // slow blink when disconnected
     drive_system.set_speed(0,0);
     Serial.println("Timeout receiving command, set speed to 0");
     last_receive_time = millis();
   }
-  digitalWrite(LED_BUILTIN, LOW);
 }

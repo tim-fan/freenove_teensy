@@ -8,7 +8,7 @@ class Motor {
     public:
         Motor(Adafruit_PWMServoDriver& pwm_driver, int fwd_channel, int bkwd_channel);
         void set_speed(float speed);        
-        static constexpr float max_speed = 0.4;
+        static constexpr float max_speed = 0.2; // Blue TT motor
         
     private:
         Adafruit_PWMServoDriver& _pwm_driver;

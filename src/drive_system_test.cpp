@@ -30,7 +30,7 @@ void loop() {
 
 
     const float speed = 0.2f; // base speed
-
+    bool toggle = false;
 
     std::vector<std::tuple<String, float, float>> speed_profile = {
         {String("forward, ") + String(speed) + " m/s",    speed,         0.0f},
@@ -48,9 +48,12 @@ void loop() {
     };
     for (const auto& entry : speed_profile) {
         const auto& [description, linear, angular] = entry;
+        digitalWrite(LED_BUILTIN, toggle);
+        toggle = !toggle;
 
         Serial.println(description);
         drive_system.set_speed(linear, angular);
+
         delay(1000);
         Serial.println(); 
     }
