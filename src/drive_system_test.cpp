@@ -9,10 +9,10 @@
 Adafruit_PWMServoDriver pwm_driver = Adafruit_PWMServoDriver();
 
 DriveSystem drive_system(
-    Motor(pwm_driver, 1, 0), // right rear
+    Motor(pwm_driver, 0, 1), // right rear
     Motor(pwm_driver, 2, 3), // right front
     Motor(pwm_driver, 5, 4), // left front
-    Motor(pwm_driver, 7, 6) // left rear
+    Motor(pwm_driver, 6, 7) // left rear
 );
 
 void setup() {
